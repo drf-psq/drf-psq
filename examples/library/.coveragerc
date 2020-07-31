@@ -1,0 +1,9 @@
+[run]
+branch = True
+data_file = .coverage
+source = examples/library/
+omit =
+    *manage.py
+    *sgi.py
+    *apps.py
+    *drf_psq*

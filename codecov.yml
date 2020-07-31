@@ -1,0 +1,24 @@
+coverage:
+  status:
+    project:
+      default: false
+      books:
+        target: 100%
+        paths:
+          - examples/library/project/books/
+      users:
+        target: 100%
+        paths:
+          - examples/library/project/users/
+    patch:
+      default: false
+      books:
+        target: 100%
+        paths:
+          - examples/library/project/books/
+      users:
+        target: 100%
+        paths:
+          - examples/library/project/users/
+
+comment: false

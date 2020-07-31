@@ -1,0 +1,28 @@
+# Config file for automatic testing at travis-ci.org
+
+language: python
+
+python:
+  - 3.6
+  - 3.7
+  - 3.8
+
+env:
+  - TOXENV=django22
+  - TOXENV=django30
+  - TOXENV=djangoXX
+
+cache:
+  - pip
+  
+before_install:
+  - pip install --upgrade pip
+
+install:
+  - pip install -r tox-requirements.pip
+
+script:
+  - tox -c examples/library/tox.ini
+
+after_success:
+  - codecov

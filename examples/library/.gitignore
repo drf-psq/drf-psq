@@ -9,6 +9,11 @@ venv*/
 *.c
 __pycache__/
 build/
+
 local_settings.py
 db.sqlite*
 media
+
+.tox/
+.coverage/
+coverage.xml
