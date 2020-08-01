@@ -1,5 +1,10 @@
 # drf-psq
 
+[![Build Status](https://travis-ci.org/drf-psq/drf-psq.svg?branch=master)](https://travis-ci.org/drf-psq/drf-psq)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/115a206999004ff0b0196e7b48a856a6)](https://www.codacy.com/gh/drf-psq/drf-psq?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=drf-psq/drf-psq&amp;utm_campaign=Badge_Grade)
+[![codecov](https://codecov.io/gh/drf-psq/drf-psq/branch/master/graph/badge.svg)](https://codecov.io/gh/drf-psq/drf-psq)
+[![License: MIT](https://img.shields.io/github/license/drf-psq/drf-psq.svg)](https://github.com/drf-psq/drf-psq/blob/master/LICENSE)
+
 `drf-psq` is an extension for the Django REST framework that gives support for having view-based **permission_classes**, **serializer_class**, and **queryset**.
 In a typical DRF project, you probably have faced the problem that you want to set different permissions for different views with different serializers and you have to write too many `if` statements and override some methods to achieve this goal! Well, you don't have to do those kinds of hard stuff anymore. `drf-psq` is made to solve this problem and even more!
 
@@ -236,3 +241,7 @@ So, you can avoid creating too many redundant permission classes for each associ
 ## A Complete Example
 
 The complete source code of our library example can be found [here](https://github.com/drf-psq/drf-psq/tree/master/examples/library).
+
+## Acknowledgments
+
+* Thanks to [@jooof](https://github.com/jooof) for his brilliant opinions and suggestions.
