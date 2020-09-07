@@ -6,8 +6,8 @@
 [![License: MIT](https://img.shields.io/github/license/drf-psq/drf-psq.svg)](https://github.com/drf-psq/drf-psq/blob/master/LICENSE)
 [![PyPI version shields.io](https://img.shields.io/pypi/v/drf-psq.svg)](https://pypi.python.org/pypi/drf-psq)
 
-`drf-psq` is an extension for the Django REST framework that gives support for having view-based **permission_classes**, **serializer_class**, and **queryset**.
-In a typical DRF project, you probably have faced the problem that you want to set different permissions for different views with different serializers and you have to write too many `if` statements and override some methods to achieve this goal! Well, you don't have to do those kinds of hard stuff anymore. `drf-psq` is made to solve this problem and even more!
+`drf-psq` is an extension for the Django REST framework that gives support for having action-based **permission_classes**, **serializer_class**, and **queryset** dependent on permission-based rules.
+In a typical DRF project, you probably have faced the problem of setting different permissions for different actions with different serializers, all of which are dependent on some rules and you have to write too many `if` statements and override some methods to achieve this goal! Well, you don't have to do those kinds of hard stuff anymore. `drf-psq` is made to solve this problem and even more!
 
 ## Setup
 
@@ -81,7 +81,7 @@ class UserViewSet(viewsets.ModelViewSet):
 ```
 
 This implementation has too many unrelated codes to views' logic and also in more complex scenarios, there would be a higher chance of making mistakes and causing bugs.
-But, there is no need to implement these enormous amounts of hard codes in every viewset of each project. Using `drf-psq` all these codes can be replaced by only a configuration dictionary.
+But, there is no need to implement this significant amount of hard code in every viewset of each project. Using `drf-psq` all these codes can be replaced by only a configuration dictionary.
 
 Now let `drf-psq` do the work:
 
@@ -114,7 +114,7 @@ A mixin that contains logics of `drf-psq` and viewsets must inherit it in order 
 
 ### 2. psq_rules dictionary
 
-A dictionary that contains access rules. Keys can be strings or tuples of strings, indicating the name of the view(s). Values are a list of `Rule` classes. Each `Rule` class contains information about an access rule. More details are provided in the later subsections.
+A dictionary that contains access rules. Keys can be strings or tuples of strings, indicating the name of the action(s). Values are a list of `Rule` classes. Each `Rule` class contains information about an access rule. More details are provided in the later subsections.
 
 * **Important note:** The roles in the mentioned list will be checked respectively and their order matters. The first matched rule will be selected to be applied. If none of them matches, the action will not be performed.
 
