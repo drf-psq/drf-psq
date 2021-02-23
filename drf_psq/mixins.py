@@ -121,3 +121,31 @@ class PsqMixin(object):
 
         if get_caller_name() != self.get_object.__name__:
             super().check_object_permissions(*args, **kwargs)
+
+
+    def _psq_remove_unallowed_filters(self):
+        serializer_class = self.get_serializer_class()
+        if not serializer_class:
+            return
+
+        query_params = self.request.query_params.copy()
+        allowed_fields = serializer_class().get_fields().keys()
+        all_fields = [
+            field.name for field in serializer_class.Meta.model._meta.get_fields()
+        ]
+
+        for param in list(query_params.keys()):
+            filter_field = param.split('__')[0]
+            if (filter_field in all_fields) and (filter_field not in allowed_fields):
+                query_params.pop(param)
+
+        query_params._mutable = False
+        self.request._request.GET = query_params
+
+
+    def filter_queryset(self, *args, **kwargs):
+        if get_caller_name() == self.get_object.__name__:
+            return super().filter_queryset(*args, **kwargs)
+
+        self._psq_remove_unallowed_filters()
+        return super().filter_queryset(*args, **kwargs)
