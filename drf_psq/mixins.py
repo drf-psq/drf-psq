@@ -114,10 +114,13 @@ class PsqMixin(object):
     def check_object_permissions(self, *args, **kwargs):
         if self.action == 'metadata':
             super().check_object_permissions(*args, **kwargs)
+            return
 
         view = self._psq_get_view()
         if not self._psq_check(view):
             super().check_object_permissions(*args, **kwargs)
+            return
 
         if get_caller_name() != self.get_object.__name__:
             super().check_object_permissions(*args, **kwargs)
+            return
